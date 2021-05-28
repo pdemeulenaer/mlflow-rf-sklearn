@@ -16,7 +16,7 @@ import socket
 import traceback
 import pandas as pd
 import numpy as np
-from IPython.core.pylabtools import figsize
+# from IPython.core.pylabtools import figsize
 from matplotlib import pyplot as plt
 import pylab
 from pylab import *
@@ -30,8 +30,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.datasets import load_iris
 from sklearn.metrics import plot_confusion_matrix
 
-import mlflow
-from mlflow.tracking.client import MlflowClient
+# import mlflow
+# from mlflow.tracking.client import MlflowClient
 
 # COMMAND ----------
 
@@ -71,7 +71,7 @@ config_json = '''{
     }
 }'''
 
-data_conf = json.loads(data_json)
+# data_conf = json.loads(data_json)
 model_conf = json.loads(config_json)
 
 data_conf, model_conf
@@ -79,25 +79,25 @@ data_conf, model_conf
 # COMMAND ----------
 
 # Define the environment (dev, test or prod)
-env = dbutils.widgets.getArgument("environment")
+# env = dbutils.widgets.getArgument("environment")
 
-print()
-print('Running in ', env)    
+# print()
+# print('Running in ', env)    
 
-data_conf = json.loads(data_json)
+# data_conf = json.loads(data_json)
 model_conf = json.loads(config_json)
 
-print(data_conf[env])
+# print(data_conf[env])
 print(model_conf)
 
 mlflow_model_name = 'sklearn-rf' #model_conf['model_name']
 
 # Define the scoring mode
 # evaluate_or_score = str(sys.argv[1])
-evaluate_or_score = dbutils.widgets.getArgument("evaluate_or_score")
+# evaluate_or_score = dbutils.widgets.getArgument("evaluate_or_score")
 
 # Define the MLFlow experiment location
-mlflow.set_experiment("/Shared/simple-rf-sklearn/simple-rf-sklearn_experiment")
+# mlflow.set_experiment("/Shared/simple-rf-sklearn/simple-rf-sklearn_experiment")
 
 
 # ---------------------------------------------------------------------------------------
