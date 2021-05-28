@@ -74,7 +74,7 @@ config_json = '''{
 # data_conf = json.loads(data_json)
 model_conf = json.loads(config_json)
 
-data_conf, model_conf
+# data_conf, model_conf
 
 # COMMAND ----------
 
