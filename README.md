@@ -6,6 +6,12 @@ This is a simple random forest classifier of the Iris dataset that is trained (s
 
 The flask app docker image is deployed as a container on Openshift (tested either Kubernete's local Minikube or Redhat's Openshift Sandbox, in the latter one so far the deployment is done in the UI using the Dockerfile deployment option).
 
+When using the Dockerfile deployment option, you need to select a route creation, so that you can then serve the model using the address, such as this example:
+
+http://rf-sklearn-pdemeulenaer-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/score?petal_length=4.0&petal_width=1.0&sepal_length=1.0&sepal_width=1.0
+
+This so far returns in the browser: [1.]
+
 ## To-Do list
 
 * Create an Azure DevOps CI pipeline. The CI will contain traditional code analysis (Pylint), Unit testing (pytest, pytest-cov) and bring reports to SonarCloud (where only Master branch is considered...for a real Git Flow, use SonarQube) [Todo] 
