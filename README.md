@@ -20,6 +20,14 @@ The flask app docker image is deployed as a container on Openshift (tested eithe
 
 * Later, create multiple environments and train/test in those, before migrating to PROD [Todo]
 
-* Later, create another app running in Openshift
+# Later development ideas
+
+* Later, create another app running in Openshift that will create data live. For this I would think of a make_blobs function of scikit-learn (https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_blobs.html). The app would generate such datapoints for let's say 3 clusters every 10s. Then these datapoints would be loaded to some postgres database. Then both training and serving codes would be able to query that db
+
+* Also, we could test an app that would serve in time windows, with windows ranging from taking the last batch of data and serving it, to taking the last day or month of data and serving it... would be interesting to see the behaviour
+
+* Instead of trying to pass in the CD step directly the code to Openshift, build the docker image from the dockerfile and push it to a docker registry (like DockerHub). Then Openshift should "feel" the change in the Docker registry and re-deploy the app. The deployment would then use a yaml manifest(?)
+
+* Create the MDLC feedback loop of MLOps: when the code changes, or the data change "significantly" (to be defined), or the model performance (accuracy here) drops under a threshold (to be defined), would re-trigger the training of the model and deploy the dockerfile.
 
 
