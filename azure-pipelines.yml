@@ -64,6 +64,6 @@ stages:
         connectionType: 'OpenShift Connection Service'
         openshiftService: 'openshift_connect'
         #cmd: 'oc new-build --name rf-sklearn-image --strategy=docker https://github.com/pdemeulenaer/mlflow-rf-sklearn.git '
-        cmd: 'oc new-app $(Build.SourcesDirectory)/production --strategy=docker'
+        cmd: 'oc new-app $(Build.SourcesDirectory)/production --strategy=docker | oc expose service/mlflow-rf-sklearn'
         uselocalOc: true
       displayName: 'Connect to Openshift' 
