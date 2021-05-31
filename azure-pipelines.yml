@@ -49,7 +49,7 @@ stages:
           # Write your commands here
           
           ls
-          cat $(Build.SourcesDirectory)/production
+          cat $(Build.SourcesDirectory)/production/Dockerfile
 
     - task: oc-cmd@2
       inputs:
@@ -59,10 +59,11 @@ stages:
         uselocalOc: true
       displayName: 'Connect to Openshift'
       
-    # - task: oc-cmd@2
-    #   inputs:
-    #     connectionType: 'OpenShift Connection Service'
-    #     openshiftService: 'openshift_connect'
-    #     cmd: 'oc new-build --name rf-sklearn-image --strategy=docker https://github.com/pdemeulenaer/mlflow-rf-sklearn.git '
-    #     uselocalOc: true
-    #   displayName: 'Connect to Openshift' 
+    - task: oc-cmd@2
+      inputs:
+        connectionType: 'OpenShift Connection Service'
+        openshiftService: 'openshift_connect'
+        #cmd: 'oc new-build --name rf-sklearn-image --strategy=docker https://github.com/pdemeulenaer/mlflow-rf-sklearn.git '
+        cmd: 'oc new-app $(Build.SourcesDirectory)/production --strategy=docker'
+        uselocalOc: true
+      displayName: 'Connect to Openshift' 
