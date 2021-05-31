@@ -45,11 +45,19 @@ stages:
         uselocalOc: true
       displayName: 'Connect to Openshift'
       
+    # - task: oc-cmd@2
+    #   inputs:
+    #     connectionType: 'OpenShift Connection Service'
+    #     openshiftService: 'openshift_connect'
+    #     #cmd: 'oc new-build --name rf-sklearn-image --strategy=docker https://github.com/pdemeulenaer/mlflow-rf-sklearn.git '
+    #     cmd: 'oc new-app $(Build.SourcesDirectory)/production --strategy=docker | oc expose service/mlflow-rf-sklearn'
+    #     uselocalOc: true
+    #   displayName: 'Deploy using docker strategy' 
+
     - task: oc-cmd@2
       inputs:
         connectionType: 'OpenShift Connection Service'
         openshiftService: 'openshift_connect'
-        #cmd: 'oc new-build --name rf-sklearn-image --strategy=docker https://github.com/pdemeulenaer/mlflow-rf-sklearn.git '
-        cmd: 'oc new-app $(Build.SourcesDirectory)/production --strategy=docker | oc expose service/mlflow-rf-sklearn'
+        cmd: 'oc new-app image-registry.openshift-image-registry.svc:5000/pdemeulenaer-dev/mlflow-rf-sklearn:latest'
         uselocalOc: true
       displayName: 'Deploy using docker strategy' 
