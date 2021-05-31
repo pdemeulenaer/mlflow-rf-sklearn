@@ -42,7 +42,14 @@ stages:
     #     command: 'buildAndPush'
     #     Dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
 
-
+    - task: Bash@3
+      inputs:
+        targetType: 'inline'
+        script: |
+          # Write your commands here
+          
+          ls
+          cat $(Build.SourcesDirectory)/production
 
     - task: oc-cmd@2
       inputs:
@@ -50,3 +57,12 @@ stages:
         openshiftService: 'openshift_connect'
         cmd: 'oc get deploy'
         uselocalOc: true
+      displayName: 'Connect to Openshift'
+      
+    # - task: oc-cmd@2
+    #   inputs:
+    #     connectionType: 'OpenShift Connection Service'
+    #     openshiftService: 'openshift_connect'
+    #     cmd: 'oc new-build --name rf-sklearn-image --strategy=docker https://github.com/pdemeulenaer/mlflow-rf-sklearn.git '
+    #     uselocalOc: true
+    #   displayName: 'Connect to Openshift' 
