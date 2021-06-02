@@ -35,7 +35,7 @@ stages:
           # Write your commands here
           
           ls
-          cat $(Build.SourcesDirectory)/production/Dockerfile
+          cat $(Build.SourcesDirectory)/Dockerfile
 
     - task: oc-cmd@2
       inputs:
@@ -66,6 +66,6 @@ stages:
       inputs:
         connectionType: 'OpenShift Connection Service'
         openshiftService: 'openshift_connect'
-        cmd: 'oc new-app --name mlflow-rf-sklearn $(Build.SourcesDirectory)/production --strategy=docker | oc expose service/mlflow-rf-sklearn'
+        cmd: 'oc new-app --name mlflow-rf-sklearn $(Build.SourcesDirectory) --strategy=docker | oc expose service/mlflow-rf-sklearn'
         uselocalOc: true
       displayName: 'Deploy using docker strategy' 
