@@ -101,10 +101,18 @@ stages:
       inputs:
         connectionType: 'OpenShift Connection Service'
         openshiftService: 'openshift_connect'
+        cmd: 'oc delete route mlflow-rf-sklearn'
+        uselocalOc: true
+      displayName: 'Deleting previous route' 
+      continueOnError: true
+
+    - task: oc-cmd@2
+      inputs:
+        connectionType: 'OpenShift Connection Service'
+        openshiftService: 'openshift_connect'
         cmd: 'oc new-app https://github.com/pdemeulenaer/mlflow-rf-sklearn.git --context-dir=production'
         uselocalOc: true
       displayName: 'Deploy using direct build strategy' 
-
 
     - task: oc-cmd@2
       inputs:
