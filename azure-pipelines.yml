@@ -88,10 +88,10 @@ stages:
       displayName: 'Deploy using direct build strategy' 
 
 
-    - task: oc-cmd@2
-      inputs:
-        connectionType: 'OpenShift Connection Service'
-        openshiftService: 'openshift_connect'
-        cmd: 'oc expose service/mlflow-rf-sklearn'
-        uselocalOc: true
-      displayName: 'Exposing the route' 
+    # - task: oc-cmd@2
+    #   inputs:
+    #     connectionType: 'OpenShift Connection Service'
+    #     openshiftService: 'openshift_connect'
+    #     cmd: 'oc expose service/mlflow-rf-sklearn'
+    #     uselocalOc: true
+    #   displayName: 'Exposing the route' 
