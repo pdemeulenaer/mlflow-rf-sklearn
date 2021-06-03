@@ -74,9 +74,27 @@ stages:
       inputs:
         connectionType: 'OpenShift Connection Service'
         openshiftService: 'openshift_connect'
-        cmd: 'oc delete deployment mlflow-rf-sklearn | oc delete bc mlflow-rf-sklearn | oc delete svc mlflow-rf-sklearn'
+        cmd: 'oc delete deployment mlflow-rf-sklearn'
         uselocalOc: true
-      displayName: 'Deleting previous deployment, buildconfig and service' 
+      displayName: 'Deleting previous deployment' 
+      continueOnError: true
+
+    - task: oc-cmd@2
+      inputs:
+        connectionType: 'OpenShift Connection Service'
+        openshiftService: 'openshift_connect'
+        cmd: 'oc delete bc mlflow-rf-sklearn'
+        uselocalOc: true
+      displayName: 'Deleting previous buildconfig' 
+      continueOnError: true
+
+    - task: oc-cmd@2
+      inputs:
+        connectionType: 'OpenShift Connection Service'
+        openshiftService: 'openshift_connect'
+        cmd: 'oc delete svc mlflow-rf-sklearn'
+        uselocalOc: true
+      displayName: 'Deleting previous service' 
       continueOnError: true
 
     - task: oc-cmd@2
