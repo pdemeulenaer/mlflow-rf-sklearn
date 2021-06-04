@@ -8,9 +8,9 @@ The flask app docker image is deployed as a container on Openshift (tested eithe
 
 When using the Dockerfile deployment option, you need to select a route creation, so that you can then serve the model using the address, such as this example:
 
-http://rf-sklearn-pdemeulenaer-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/score?petal_length=4.0&petal_width=1.0&sepal_length=1.0&sepal_width=1.0
+http://mlflow-rf-sklearn-pdemeulenaer-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/score?petal_length=4.0&petal_width=1.0&sepal_length=1.0&sepal_width=1.0
 
-This so far returns in the browser: [1.]
+This so far, when deployed, returns in the browser: [1.]
 
 ## To-Do list
 
