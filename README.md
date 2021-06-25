@@ -18,6 +18,8 @@ This so far, when deployed, returns in the browser: [1.]
 
 * Create an Azure DevOps CD pipeline. The CD needs to deploy the flask app to the Openshift Sandbox. I need to figure out how to make the connection seamless [Todo]
 
+* Create multiple functionalities for the Flask app. For example: training, serving, ... see https://medium.com/geekculture/machine-learning-prediction-in-real-time-using-docker-python-rest-apis-with-flask-and-kubernetes-fae08cd42e67 as example
+
 * Train the model as a scheduled job [Todo]
 
 * Customize the app to ingest arrays [Todo]
