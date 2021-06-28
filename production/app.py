@@ -26,6 +26,19 @@ def predict_species():
     # return the prediction
     return array2string(unpickled_rf.predict([flower]))
 
+# use decorator to define the /score input method and define the predict function
+@app.route("/scorebis", methods=["POST", "GET"])
+def predict_species():
+    # create list and append inputs
+    flower = []
+    flower.append(request.args.get("petal_length"))
+    flower.append(request.args.get("petal_width"))
+    flower.append(request.args.get("sepal_length"))
+    flower.append(request.args.get("sepal_width"))
+
+    # return the prediction
+    return array2string(unpickled_rf.predict([flower]))    
+
 
 # run the app
 if __name__ == "__main__":
