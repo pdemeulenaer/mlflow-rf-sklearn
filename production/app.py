@@ -28,7 +28,7 @@ def predict_species():
 
 # use decorator to define the /score input method and define the predict function
 @app.route("/scorebis", methods=["POST", "GET"])
-def predict_species():
+def predict_species_bis():
     # create list and append inputs
     flower = []
     flower.append(request.args.get("petal_length"))
