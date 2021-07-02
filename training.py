@@ -174,6 +174,7 @@ def train(data_conf, model_conf, **kwargs):
         model = clf.fit(x_train, y_train) 
 
         # score our model and print the output
+        print(x_test.shape)
         predicted = clf.predict(x_test)
         accuracy = accuracy_score(y_test, predicted)
         print(
