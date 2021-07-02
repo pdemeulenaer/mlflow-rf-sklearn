@@ -37,13 +37,13 @@ stages:
           ls
           cat $(Build.SourcesDirectory)/Dockerfile
 
-    # - task: oc-cmd@2
-    #   inputs:
-    #     connectionType: 'OpenShift Connection Service'
-    #     openshiftService: 'openshift_connect'
-    #     cmd: 'oc get deploy'
-    #     uselocalOc: true
-    #   displayName: 'Connect to Openshift'
+    - task: oc-cmd@2
+      inputs:
+        connectionType: 'OpenShift Connection Service'
+        openshiftService: 'openshift_connect'
+        cmd: 'oc get deploy'
+        uselocalOc: true
+      displayName: 'Connect to Openshift'
       
     # - task: oc-cmd@2
     #   inputs:
