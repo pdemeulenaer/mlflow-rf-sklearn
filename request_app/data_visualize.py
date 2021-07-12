@@ -9,67 +9,75 @@ import requests
 import json
 import io
 
-
-# ==============================
-# 1. Full Dataset Loading
-# ==============================
-# Loading of dataset
-iris = load_iris()                  #The Iris dataset is available through the scikit-learn API
-idx = list(range(len(iris.target)))
-np.random.shuffle(idx)              #We shuffle it (important if we want to split in train and test sets)
-X = iris.data[idx]
-y = iris.target[idx]
-# Load data in Pandas dataFrame
-data_pd = pd.DataFrame(data=np.column_stack((X,y)), columns=['sepal_length', 'sepal_width', 'petal_length', 'petal_width', 'label'])
-data_pd.loc[data_pd['label']==0,'species'] = 'setosa'
-data_pd.loc[data_pd['label']==1,'species'] = 'versicolor'
-data_pd.loc[data_pd['label']==2,'species'] = 'virginica'
-data_pd.head()
-
-
-# Feature selection
-feature_cols = ['sepal_length', 'sepal_width', 'petal_length', 'petal_width']
-target       = 'label'   
-
-X = data_pd[feature_cols].values
-y = data_pd[target].values
-
-#print(X)
-
-# =======================================
-# 2. Data Generation (with random noise)
-# =======================================
-N=30
-
-data_gen_pd = data_pd[:N]
-X_gen = data_gen_pd[feature_cols].values
-y_gen = data_gen_pd[target].values
-
-# Adding gaussian noise
-X_gen = X_gen + np.random.normal(0,1,(N,4))
-# print(X_gen)
-
-
-# =======================================
-# 3. Call Prediction API
-# =======================================
-
-# #url = 'http://0.0.0.0:8080/api/'
-url = 'http://mlflow-rf-sklearn-pdemeulenaer-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/api/'
-
-data = X_gen.tolist() #[[5.7, 2.8, 4.1, 1.3],[5.8, 2.6, 4., 1.2],[5.8, 2.6, 4., 1.2]]
-j_data = json.dumps(data)
-headers = {'content-type': 'application/json', 'Accept-Charset': 'UTF-8'}
-r = requests.post(url, data=j_data, headers=headers)
-pred=np.array(r.text)
-print('prediction is:', pred)
-print('real is:', y_gen)
-
-# =======================================
-# 4. Create Visualisation
-# =======================================
-
 def do_plot():
+    # ==============================
+    # 1. Full Dataset Loading
+    # ==============================
+    # Loading of dataset
+    iris = load_iris()                  #The Iris dataset is available through the scikit-learn API
+    idx = list(range(len(iris.target)))
+    np.random.shuffle(idx)              #We shuffle it (important if we want to split in train and test sets)
+    X = iris.data[idx]
+    y = iris.target[idx]
+    # Load data in Pandas dataFrame
+    data_pd = pd.DataFrame(data=np.column_stack((X,y)), columns=['sepal_length', 'sepal_width', 'petal_length', 'petal_width', 'label'])
+    data_pd.loc[data_pd['label']==0,'species'] = 'setosa'
+    data_pd.loc[data_pd['label']==1,'species'] = 'versicolor'
+    data_pd.loc[data_pd['label']==2,'species'] = 'virginica'
+    data_pd.head()
+
+    # Feature selection
+    feature_cols = ['sepal_length', 'sepal_width', 'petal_length', 'petal_width']
+    target       = 'label'   
+
+    X = data_pd[feature_cols].values
+    y = data_pd[target].values
+
+    #print(X)
+
+    # =======================================
+    # 2. Data Generation (with random noise)
+    # =======================================
+    # N=30
+
+    # data_gen_pd = data_pd[:N]
+    # X_gen = data_gen_pd[feature_cols].values
+    # y_gen = data_gen_pd[target].values
+
+    # # Adding gaussian noise
+    # X_gen = X_gen + np.random.normal(0,1,(N,4))
+    # # print(X_gen)
+
+    url = 'http://192.168.98.175:8080/api'
+    #url = 'http://mlflow-rf-sklearn-pdemeulenaer-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/api/'
+
+    r = requests.get(url).json()
+    data_gen_pd = pd.DataFrame.from_dict(r)
+
+    X_gen = data_gen_pd[feature_cols].values
+    y_gen = data_gen_pd[target].values  
+
+
+    # =======================================
+    # 3. Call Prediction API
+    # =======================================
+
+    # #url = 'http://0.0.0.0:8080/api/'
+    url = 'http://mlflow-rf-sklearn-pdemeulenaer-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/api/'
+
+    data = X_gen.tolist() #[[5.7, 2.8, 4.1, 1.3],[5.8, 2.6, 4., 1.2],[5.8, 2.6, 4., 1.2]]
+    j_data = json.dumps(data)
+    headers = {'content-type': 'application/json', 'Accept-Charset': 'UTF-8'}
+    r = requests.post(url, data=j_data, headers=headers)
+    pred=np.array(r.text)
+    print('prediction is:', pred)
+    print('real is:', y_gen)
+
+    # =======================================
+    # 4. Create Visualisation
+    # =======================================
+
+
     # Create bee swarm plot with Seaborn's default settings
     #sns.swarmplot(x='species',y='petal_length',data=data_pd)
     #fig = plt.figure(1,(5,5))
@@ -117,5 +125,5 @@ def plot_in_flask():
                      mimetype='image/png')
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)    
 

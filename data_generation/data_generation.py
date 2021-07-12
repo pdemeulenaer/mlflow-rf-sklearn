@@ -26,8 +26,16 @@ def get_dataframe_from_somewhere(N):
     data_pd.head()
 
     # N=30
-    #data_gen_pd = data_pd[:N]
-    return data_pd[:N]
+    data_gen_pd = data_pd[:N]
+
+    # Feature selection
+    feature_cols = ['sepal_length', 'sepal_width', 'petal_length', 'petal_width']
+    target       = 'label'      
+
+    # Adding gaussian noise
+    data_gen_pd[feature_cols] = data_gen_pd[feature_cols] + np.random.normal(0,0.2,(N,4))
+
+    return data_gen_pd[:N]
 
 
 
