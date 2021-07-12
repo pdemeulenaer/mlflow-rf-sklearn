@@ -136,4 +136,4 @@ stages:
         openshiftService: 'openshift_connect'
         cmd: 'oc expose service/iris-data-generation'
         uselocalOc: true
-      displayName: 'Exposing the route' 
+      displayName: 'Exposing the route for iris-data-generation' 
