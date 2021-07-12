@@ -4,6 +4,7 @@ import pickle
 #from numpy import array2string
 import numpy as np
 
+# http://mlflow-rf-sklearn-pdemeulenaer-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/scorebis?petal_length=4.0&petal_width=1.0&sepal_length=1.0&sepal_width=1.0
 
 
 # define the app
