@@ -48,7 +48,7 @@ def do_plot():
     # X_gen = X_gen + np.random.normal(0,1,(N,4))
     # # print(X_gen)
 
-    url = 'http://192.168.98.175:8080/api'
+    url = 'http://192.168.0.116:8081/api'
     #url = 'http://mlflow-rf-sklearn-pdemeulenaer-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/api/'
 
     r = requests.get(url).json()

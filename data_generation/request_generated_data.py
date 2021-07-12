@@ -2,7 +2,7 @@ import requests
 import json
 import pandas as pd
 
-url = 'http://192.168.98.175:8080/api'
+url = 'http://192.168.0.116:8081/api'
 #url = 'http://mlflow-rf-sklearn-pdemeulenaer-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/api/'
 
 # data = [[5.7, 2.8, 4.1, 1.3],[5.8, 2.6, 4., 1.2],[5.8, 2.6, 4., 1.2]]
