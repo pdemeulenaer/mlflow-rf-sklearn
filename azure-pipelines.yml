@@ -106,11 +106,27 @@ stages:
       displayName: 'Deleting previous route' 
       continueOnError: true
 
+    # - task: oc-cmd@2
+    #   inputs:
+    #     connectionType: 'OpenShift Connection Service'
+    #     openshiftService: 'openshift_connect'
+    #     cmd: 'oc new-app https://github.com/pdemeulenaer/mlflow-rf-sklearn.git --context-dir=production'
+    #     uselocalOc: true
+    #   displayName: 'Deploy using direct build strategy' 
+
+    # - task: oc-cmd@2
+    #   inputs:
+    #     connectionType: 'OpenShift Connection Service'
+    #     openshiftService: 'openshift_connect'
+    #     cmd: 'oc expose service/mlflow-rf-sklearn'
+    #     uselocalOc: true
+    #   displayName: 'Exposing the route' 
+
     - task: oc-cmd@2
       inputs:
         connectionType: 'OpenShift Connection Service'
         openshiftService: 'openshift_connect'
-        cmd: 'oc new-app https://github.com/pdemeulenaer/mlflow-rf-sklearn.git --context-dir=production'
+        cmd: 'oc new-app https://github.com/pdemeulenaer/mlflow-rf-sklearn.git --context-dir=data_generation --name=iris-data-generation'
         uselocalOc: true
       displayName: 'Deploy using direct build strategy' 
 
@@ -118,6 +134,6 @@ stages:
       inputs:
         connectionType: 'OpenShift Connection Service'
         openshiftService: 'openshift_connect'
-        cmd: 'oc expose service/mlflow-rf-sklearn'
+        cmd: 'oc expose service/iris-data-generation'
         uselocalOc: true
       displayName: 'Exposing the route' 
