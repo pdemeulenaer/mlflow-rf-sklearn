@@ -74,7 +74,7 @@ stages:
       inputs:
         connectionType: 'OpenShift Connection Service'
         openshiftService: 'openshift_connect'
-        cmd: 'oc delete deployment mlflow-rf-sklearn'
+        cmd: 'oc delete deployment iris-data-generation'
         uselocalOc: true
       displayName: 'Deleting previous deployment' 
       continueOnError: true
@@ -83,7 +83,7 @@ stages:
       inputs:
         connectionType: 'OpenShift Connection Service'
         openshiftService: 'openshift_connect'
-        cmd: 'oc delete bc mlflow-rf-sklearn'
+        cmd: 'oc delete bc iris-data-generation'
         uselocalOc: true
       displayName: 'Deleting previous buildconfig' 
       continueOnError: true
@@ -92,7 +92,7 @@ stages:
       inputs:
         connectionType: 'OpenShift Connection Service'
         openshiftService: 'openshift_connect'
-        cmd: 'oc delete svc mlflow-rf-sklearn'
+        cmd: 'oc delete svc iris-data-generation'
         uselocalOc: true
       displayName: 'Deleting previous service' 
       continueOnError: true
@@ -101,7 +101,7 @@ stages:
       inputs:
         connectionType: 'OpenShift Connection Service'
         openshiftService: 'openshift_connect'
-        cmd: 'oc delete route mlflow-rf-sklearn'
+        cmd: 'oc delete route iris-data-generation'
         uselocalOc: true
       displayName: 'Deleting previous route' 
       continueOnError: true
