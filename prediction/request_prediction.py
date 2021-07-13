@@ -2,7 +2,7 @@ import requests
 import json
 
 #url = 'http://0.0.0.0:8080/api/'
-url = 'http://mlflow-rf-sklearn-pdemeulenaer-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/api/'
+url = 'http://iris-rf-prediction-pdemeulenaer-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/api/'
 
 data = [[5.7, 2.8, 4.1, 1.3],[5.8, 2.6, 4., 1.2],[5.8, 2.6, 4., 1.2]]
 j_data = json.dumps(data)
