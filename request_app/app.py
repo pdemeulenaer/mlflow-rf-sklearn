@@ -48,8 +48,8 @@ def do_plot():
     # X_gen = X_gen + np.random.normal(0,1,(N,4))
     # # print(X_gen)
 
-    url = 'http://192.168.0.116:8081/api'
-    #url = 'http://mlflow-rf-sklearn-pdemeulenaer-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/api/'
+    #url = 'http://192.168.0.116:8081/api'
+    url = 'http://iris-data-generation-pdemeulenaer-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/api'
 
     r = requests.get(url).json()
     data_gen_pd = pd.DataFrame.from_dict(r)
@@ -63,7 +63,7 @@ def do_plot():
     # =======================================
 
     # #url = 'http://0.0.0.0:8080/api/'
-    url = 'http://mlflow-rf-sklearn-pdemeulenaer-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/api/'
+    url = 'http://iris-rf-prediction-pdemeulenaer-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/api/'
 
     data = X_gen.tolist() #[[5.7, 2.8, 4.1, 1.3],[5.8, 2.6, 4., 1.2],[5.8, 2.6, 4., 1.2]]
     j_data = json.dumps(data)
@@ -124,6 +124,6 @@ def plot_in_flask():
                      download_name='plot.png',
                      mimetype='image/png')
 
-if __name__ == '__main__':
-    app.run(debug=True)    
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", debug=True, port="8080")     
 

@@ -191,3 +191,56 @@ stages:
         cmd: 'oc expose service/iris-rf-prediction'
         uselocalOc: true
       displayName: 'Exposing the route'     
+      
+    # DEPLOYING iris-show-prediction
+    - task: oc-cmd@2
+      inputs:
+        connectionType: 'OpenShift Connection Service'
+        openshiftService: 'openshift_connect'
+        cmd: 'oc delete deployment iris-show-prediction'
+        uselocalOc: true
+      displayName: 'Deleting previous deployment' 
+      continueOnError: true
+
+    - task: oc-cmd@2
+      inputs:
+        connectionType: 'OpenShift Connection Service'
+        openshiftService: 'openshift_connect'
+        cmd: 'oc delete bc iris-show-prediction'
+        uselocalOc: true
+      displayName: 'Deleting previous buildconfig' 
+      continueOnError: true
+
+    - task: oc-cmd@2
+      inputs:
+        connectionType: 'OpenShift Connection Service'
+        openshiftService: 'openshift_connect'
+        cmd: 'oc delete svc iris-show-prediction'
+        uselocalOc: true
+      displayName: 'Deleting previous service' 
+      continueOnError: true
+
+    - task: oc-cmd@2
+      inputs:
+        connectionType: 'OpenShift Connection Service'
+        openshiftService: 'openshift_connect'
+        cmd: 'oc delete route iris-show-prediction'
+        uselocalOc: true
+      displayName: 'Deleting previous route' 
+      continueOnError: true
+
+    - task: oc-cmd@2
+      inputs:
+        connectionType: 'OpenShift Connection Service'
+        openshiftService: 'openshift_connect'
+        cmd: 'oc new-app https://github.com/pdemeulenaer/mlflow-rf-sklearn.git --context-dir=request_app --name=iris-show-prediction'
+        uselocalOc: true
+      displayName: 'Deploy using direct build strategy' 
+
+    - task: oc-cmd@2
+      inputs:
+        connectionType: 'OpenShift Connection Service'
+        openshiftService: 'openshift_connect'
+        cmd: 'oc expose service/iris-show-prediction'
+        uselocalOc: true
+      displayName: 'Exposing the route'      
