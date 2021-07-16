@@ -24,7 +24,7 @@ This so far, when deployed, returns in the browser: [1.]
 
 * Customize the app to ingest arrays [Todo]
 
-* Create a streamlit application to monitor the app [Todo]
+* Create a streamlit application to monitor the app [Todo] (or use Grafana)
 
 * Later, create multiple environments and train/test in those, before migrating to PROD [Todo]
 
