@@ -12,6 +12,10 @@ http://mlflow-rf-sklearn-pdemeulenaer-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.
 
 This so far, when deployed, returns in the browser: [1.]
 
+## Architecture of the solution
+
+![Alt text](architecture.png?raw=true "Architecture")
+
 ## To-Do list
 
 * Create an Azure DevOps CI pipeline. The CI will contain traditional code analysis (Pylint), Unit testing (pytest, pytest-cov) and bring reports to SonarCloud (where only Master branch is considered...for a real Git Flow, use SonarQube) [Todo] 
@@ -20,9 +24,13 @@ This so far, when deployed, returns in the browser: [1.]
 
 * Create multiple functionalities for the Flask app. For example: training, serving, ... see https://medium.com/geekculture/machine-learning-prediction-in-real-time-using-docker-python-rest-apis-with-flask-and-kubernetes-fae08cd42e67 as example
 
-* Train the model as a scheduled job [Todo]
+* Train the model as a scheduled job [Todo] 
 
-* Customize the app to ingest arrays [Todo]
+* Deploy (manually) an MLflow instance in openshift [Done]
+
+* Log the hyperparameters, metrics, model artefacts into MLflow
+
+* Customize the app to ingest arrays and return predictions for them [Todo]
 
 * Create a streamlit application to monitor the app [Todo] (or use Grafana)
 
