@@ -1,4 +1,4 @@
-# rf-sklearn
+# Deploying a scikit-learn Iris classifier on Openshift
 
 ## Intro
 
@@ -28,13 +28,15 @@ This so far, when deployed, returns in the browser: [1.]
 
 * Deploy (manually) an MLflow instance in openshift [Done]
 
-* Log the hyperparameters, metrics, model artefacts into MLflow
+* Log the hyperparameters, metrics, model artefacts into MLflow [Todo]
 
 * Customize the app to ingest arrays and return predictions for them [Todo]
 
 * Create a streamlit application to monitor the app [Todo] (or use Grafana)
 
 * Later, create multiple environments and train/test in those, before migrating to PROD [Todo]
+
+Note: it is useful to get the docker images copied from DockerHub to internal Openshift image registry (how to here https://cookbook.openshift.org/image-registry-and-image-streams/how-do-i-import-an-image-from-an-external-image.html) to avoid pulling limitations from DockerHub from the Openshift cluster.
 
 # Later development ideas
 
