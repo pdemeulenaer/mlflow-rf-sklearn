@@ -74,58 +74,58 @@ stages:
 
 
 
-    # DEPLOYING iris-data-generation
-    - task: oc-cmd@2
-      inputs:
-        connectionType: 'OpenShift Connection Service'
-        openshiftService: 'openshift_connect'
-        cmd: 'oc delete deployment iris-data-generation'
-        uselocalOc: true
-      displayName: 'Deleting previous deployment' 
-      continueOnError: true
+    # # DEPLOYING iris-data-generation
+    # - task: oc-cmd@2
+    #   inputs:
+    #     connectionType: 'OpenShift Connection Service'
+    #     openshiftService: 'openshift_connect'
+    #     cmd: 'oc delete deployment iris-data-generation'
+    #     uselocalOc: true
+    #   displayName: 'Deleting previous deployment' 
+    #   continueOnError: true
 
-    - task: oc-cmd@2
-      inputs:
-        connectionType: 'OpenShift Connection Service'
-        openshiftService: 'openshift_connect'
-        cmd: 'oc delete bc iris-data-generation'
-        uselocalOc: true
-      displayName: 'Deleting previous buildconfig' 
-      continueOnError: true
+    # - task: oc-cmd@2
+    #   inputs:
+    #     connectionType: 'OpenShift Connection Service'
+    #     openshiftService: 'openshift_connect'
+    #     cmd: 'oc delete bc iris-data-generation'
+    #     uselocalOc: true
+    #   displayName: 'Deleting previous buildconfig' 
+    #   continueOnError: true
 
-    - task: oc-cmd@2
-      inputs:
-        connectionType: 'OpenShift Connection Service'
-        openshiftService: 'openshift_connect'
-        cmd: 'oc delete svc iris-data-generation'
-        uselocalOc: true
-      displayName: 'Deleting previous service' 
-      continueOnError: true
+    # - task: oc-cmd@2
+    #   inputs:
+    #     connectionType: 'OpenShift Connection Service'
+    #     openshiftService: 'openshift_connect'
+    #     cmd: 'oc delete svc iris-data-generation'
+    #     uselocalOc: true
+    #   displayName: 'Deleting previous service' 
+    #   continueOnError: true
 
-    - task: oc-cmd@2
-      inputs:
-        connectionType: 'OpenShift Connection Service'
-        openshiftService: 'openshift_connect'
-        cmd: 'oc delete route iris-data-generation'
-        uselocalOc: true
-      displayName: 'Deleting previous route' 
-      continueOnError: true
+    # - task: oc-cmd@2
+    #   inputs:
+    #     connectionType: 'OpenShift Connection Service'
+    #     openshiftService: 'openshift_connect'
+    #     cmd: 'oc delete route iris-data-generation'
+    #     uselocalOc: true
+    #   displayName: 'Deleting previous route' 
+    #   continueOnError: true
 
-    - task: oc-cmd@2
-      inputs:
-        connectionType: 'OpenShift Connection Service'
-        openshiftService: 'openshift_connect'
-        cmd: 'oc new-app https://github.com/pdemeulenaer/mlflow-rf-sklearn.git --context-dir=data_generation --name=iris-data-generation'
-        uselocalOc: true
-      displayName: 'Deploy using direct build strategy' 
+    # - task: oc-cmd@2
+    #   inputs:
+    #     connectionType: 'OpenShift Connection Service'
+    #     openshiftService: 'openshift_connect'
+    #     cmd: 'oc new-app https://github.com/pdemeulenaer/mlflow-rf-sklearn.git --context-dir=data_generation --name=iris-data-generation'
+    #     uselocalOc: true
+    #   displayName: 'Deploy using direct build strategy' 
 
-    - task: oc-cmd@2
-      inputs:
-        connectionType: 'OpenShift Connection Service'
-        openshiftService: 'openshift_connect'
-        cmd: 'oc expose service/iris-data-generation'
-        uselocalOc: true
-      displayName: 'Exposing the route for iris-data-generation' 
+    # - task: oc-cmd@2
+    #   inputs:
+    #     connectionType: 'OpenShift Connection Service'
+    #     openshiftService: 'openshift_connect'
+    #     cmd: 'oc expose service/iris-data-generation'
+    #     uselocalOc: true
+    #   displayName: 'Exposing the route for iris-data-generation' 
 
     # DEPLOYING iris-rf-prediction
     - task: oc-cmd@2
@@ -180,108 +180,108 @@ stages:
         uselocalOc: true
       displayName: 'Exposing the route'     
       
-    # DEPLOYING iris-show-prediction
-    - task: oc-cmd@2
-      inputs:
-        connectionType: 'OpenShift Connection Service'
-        openshiftService: 'openshift_connect'
-        cmd: 'oc delete deployment iris-show-prediction'
-        uselocalOc: true
-      displayName: 'Deleting previous deployment' 
-      continueOnError: true
+    # # DEPLOYING iris-show-prediction
+    # - task: oc-cmd@2
+    #   inputs:
+    #     connectionType: 'OpenShift Connection Service'
+    #     openshiftService: 'openshift_connect'
+    #     cmd: 'oc delete deployment iris-show-prediction'
+    #     uselocalOc: true
+    #   displayName: 'Deleting previous deployment' 
+    #   continueOnError: true
 
-    - task: oc-cmd@2
-      inputs:
-        connectionType: 'OpenShift Connection Service'
-        openshiftService: 'openshift_connect'
-        cmd: 'oc delete bc iris-show-prediction'
-        uselocalOc: true
-      displayName: 'Deleting previous buildconfig' 
-      continueOnError: true
+    # - task: oc-cmd@2
+    #   inputs:
+    #     connectionType: 'OpenShift Connection Service'
+    #     openshiftService: 'openshift_connect'
+    #     cmd: 'oc delete bc iris-show-prediction'
+    #     uselocalOc: true
+    #   displayName: 'Deleting previous buildconfig' 
+    #   continueOnError: true
 
-    - task: oc-cmd@2
-      inputs:
-        connectionType: 'OpenShift Connection Service'
-        openshiftService: 'openshift_connect'
-        cmd: 'oc delete svc iris-show-prediction'
-        uselocalOc: true
-      displayName: 'Deleting previous service' 
-      continueOnError: true
+    # - task: oc-cmd@2
+    #   inputs:
+    #     connectionType: 'OpenShift Connection Service'
+    #     openshiftService: 'openshift_connect'
+    #     cmd: 'oc delete svc iris-show-prediction'
+    #     uselocalOc: true
+    #   displayName: 'Deleting previous service' 
+    #   continueOnError: true
 
-    - task: oc-cmd@2
-      inputs:
-        connectionType: 'OpenShift Connection Service'
-        openshiftService: 'openshift_connect'
-        cmd: 'oc delete route iris-show-prediction'
-        uselocalOc: true
-      displayName: 'Deleting previous route' 
-      continueOnError: true
+    # - task: oc-cmd@2
+    #   inputs:
+    #     connectionType: 'OpenShift Connection Service'
+    #     openshiftService: 'openshift_connect'
+    #     cmd: 'oc delete route iris-show-prediction'
+    #     uselocalOc: true
+    #   displayName: 'Deleting previous route' 
+    #   continueOnError: true
 
-    - task: oc-cmd@2
-      inputs:
-        connectionType: 'OpenShift Connection Service'
-        openshiftService: 'openshift_connect'
-        cmd: 'oc new-app https://github.com/pdemeulenaer/mlflow-rf-sklearn.git --context-dir=request_app --name=iris-show-prediction'
-        uselocalOc: true
-      displayName: 'Deploy using direct build strategy' 
+    # - task: oc-cmd@2
+    #   inputs:
+    #     connectionType: 'OpenShift Connection Service'
+    #     openshiftService: 'openshift_connect'
+    #     cmd: 'oc new-app https://github.com/pdemeulenaer/mlflow-rf-sklearn.git --context-dir=request_app --name=iris-show-prediction'
+    #     uselocalOc: true
+    #   displayName: 'Deploy using direct build strategy' 
 
-    - task: oc-cmd@2
-      inputs:
-        connectionType: 'OpenShift Connection Service'
-        openshiftService: 'openshift_connect'
-        cmd: 'oc expose service/iris-show-prediction'
-        uselocalOc: true
-      displayName: 'Exposing the route'    
+    # - task: oc-cmd@2
+    #   inputs:
+    #     connectionType: 'OpenShift Connection Service'
+    #     openshiftService: 'openshift_connect'
+    #     cmd: 'oc expose service/iris-show-prediction'
+    #     uselocalOc: true
+    #   displayName: 'Exposing the route'    
     
-    # DEPLOYING iris-rf-training
-    - task: oc-cmd@2
-      inputs:
-        connectionType: 'OpenShift Connection Service'
-        openshiftService: 'openshift_connect'
-        cmd: 'oc delete deployment iris-rf-training'
-        uselocalOc: true
-      displayName: 'Deleting previous deployment' 
-      continueOnError: true
+    # # DEPLOYING iris-rf-training
+    # - task: oc-cmd@2
+    #   inputs:
+    #     connectionType: 'OpenShift Connection Service'
+    #     openshiftService: 'openshift_connect'
+    #     cmd: 'oc delete deployment iris-rf-training'
+    #     uselocalOc: true
+    #   displayName: 'Deleting previous deployment' 
+    #   continueOnError: true
 
-    - task: oc-cmd@2
-      inputs:
-        connectionType: 'OpenShift Connection Service'
-        openshiftService: 'openshift_connect'
-        cmd: 'oc delete bc iris-rf-training'
-        uselocalOc: true
-      displayName: 'Deleting previous buildconfig' 
-      continueOnError: true
+    # - task: oc-cmd@2
+    #   inputs:
+    #     connectionType: 'OpenShift Connection Service'
+    #     openshiftService: 'openshift_connect'
+    #     cmd: 'oc delete bc iris-rf-training'
+    #     uselocalOc: true
+    #   displayName: 'Deleting previous buildconfig' 
+    #   continueOnError: true
 
-    - task: oc-cmd@2
-      inputs:
-        connectionType: 'OpenShift Connection Service'
-        openshiftService: 'openshift_connect'
-        cmd: 'oc delete svc iris-rf-training'
-        uselocalOc: true
-      displayName: 'Deleting previous service' 
-      continueOnError: true
+    # - task: oc-cmd@2
+    #   inputs:
+    #     connectionType: 'OpenShift Connection Service'
+    #     openshiftService: 'openshift_connect'
+    #     cmd: 'oc delete svc iris-rf-training'
+    #     uselocalOc: true
+    #   displayName: 'Deleting previous service' 
+    #   continueOnError: true
 
-    - task: oc-cmd@2
-      inputs:
-        connectionType: 'OpenShift Connection Service'
-        openshiftService: 'openshift_connect'
-        cmd: 'oc delete route iris-rf-training'
-        uselocalOc: true
-      displayName: 'Deleting previous route' 
-      continueOnError: true
+    # - task: oc-cmd@2
+    #   inputs:
+    #     connectionType: 'OpenShift Connection Service'
+    #     openshiftService: 'openshift_connect'
+    #     cmd: 'oc delete route iris-rf-training'
+    #     uselocalOc: true
+    #   displayName: 'Deleting previous route' 
+    #   continueOnError: true
 
-    - task: oc-cmd@2
-      inputs:
-        connectionType: 'OpenShift Connection Service'
-        openshiftService: 'openshift_connect'
-        cmd: 'oc new-app https://github.com/pdemeulenaer/mlflow-rf-sklearn.git --context-dir=training --name=iris-rf-training'
-        uselocalOc: true
-      displayName: 'Deploy using direct build strategy' 
+    # - task: oc-cmd@2
+    #   inputs:
+    #     connectionType: 'OpenShift Connection Service'
+    #     openshiftService: 'openshift_connect'
+    #     cmd: 'oc new-app https://github.com/pdemeulenaer/mlflow-rf-sklearn.git --context-dir=training --name=iris-rf-training'
+    #     uselocalOc: true
+    #   displayName: 'Deploy using direct build strategy' 
 
-    - task: oc-cmd@2
-      inputs:
-        connectionType: 'OpenShift Connection Service'
-        openshiftService: 'openshift_connect'
-        cmd: 'oc expose service/iris-rf-training'
-        uselocalOc: true
-      displayName: 'Exposing the route for iris-rf-training'     
+    # - task: oc-cmd@2
+    #   inputs:
+    #     connectionType: 'OpenShift Connection Service'
+    #     openshiftService: 'openshift_connect'
+    #     cmd: 'oc expose service/iris-rf-training'
+    #     uselocalOc: true
+    #   displayName: 'Exposing the route for iris-rf-training'     
